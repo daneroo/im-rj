@@ -67,6 +67,9 @@ page.open(server+'home/login', function (status) {
             portfolio = {
               accounts:[]
             };
+            $('div#main > h2 > b').each(function(i,v){
+              portfolio.asofdate=$.trim($(this).html());
+            });
             $('div#main > table > tbody > tr').each(function(i,v){
               // $(this)
               //console.log("--"+$(this).html());
@@ -93,7 +96,7 @@ page.open(server+'home/login', function (status) {
       var f = fs.open('portfolio.json', "w");
       f.write(JSON.stringify(portfolio,null,2));
       f.close();
-      stamplog('wrote portfolio.json');
+      stamplog('wrote portfolio.json asof: '+portfolio.asofdate);
       phantom.exit();
     }
   }
