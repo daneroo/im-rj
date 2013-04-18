@@ -1,7 +1,18 @@
 # Raymond-James
+
+Get the data back from time machine:
+ls /Volumes/DiracTB/Backups.backupdb/dirac/20??-??-??-??????/Dirac/Users/daniel/Sites/im-rj/portfolio.json
+
+to copy them:
+
+
+for i in `ls /Volumes/DiracTB/Backups.backupdb/dirac/20??-??-??-??????/Dirac/Users/daniel/Sites/im-rj/portfolio.json | cut -d / -f 6`; do echo copying $i ; ls -l /Volumes/DiracTB/Backups.backupdb/dirac/$i/Dirac/Users/daniel/Sites/im-rj/portfolio.json; done
+
+ls /Volumes/DiracTB/Backups.backupdb/dirac/20??-??-??-??????/Dirac/Users/daniel/Sites/im-rj/portfolio.json|
+
 scrape the portfolio data
 
-had been failing since 2012-211-03, added --ignore-ssl-errors=yes
+had been failing since 2012-11-03, added --ignore-ssl-errors=yes
 
 ## phantomjs: getting the page
 We use [phantomjs-1.3](http://www.phantomjs.org/) to scrape-n-script the site access.
