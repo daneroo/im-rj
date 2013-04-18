@@ -6,7 +6,7 @@ ls /Volumes/DiracTB/Backups.backupdb/dirac/20??-??-??-??????/Dirac/Users/daniel/
 to copy them:
 
 
-for i in `ls /Volumes/DiracTB/Backups.backupdb/dirac/20??-??-??-??????/Dirac/Users/daniel/Sites/im-rj/portfolio.json | cut -d / -f 6`; do echo copying $i ; ls -l /Volumes/DiracTB/Backups.backupdb/dirac/$i/Dirac/Users/daniel/Sites/im-rj/portfolio.json; done
+for i in `ls /Volumes/DiracTB/Backups.backupdb/dirac/20??-??-??-??????/Dirac/Users/daniel/Sites/im-rj/portfolio.json | cut -d / -f 6`; do echo copying $i ; scp -p /Volumes/DiracTB/Backups.backupdb/dirac/$i/Dirac/Users/daniel/Sites/im-rj/portfolio.json historical/rj-portfolio-$i.json; done
 
 ls /Volumes/DiracTB/Backups.backupdb/dirac/20??-??-??-??????/Dirac/Users/daniel/Sites/im-rj/portfolio.json|
 
