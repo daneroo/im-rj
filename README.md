@@ -5,10 +5,13 @@ ls /Volumes/DiracTB/Backups.backupdb/dirac/20??-??-??-??????/Dirac/Users/daniel/
 
 to copy them:
 
+# When HD was named Dirac
+for i in `ls /Volumes/DiracTB/Backups.backupdb/dirac/20??-??-??-??????/Dirac/Users/daniel/Sites/im-rj/portfolio.json | cut -d / -f 6`; do echo copying $i ; cp /Volumes/DiracTB/Backups.backupdb/dirac/$i/Dirac/Users/daniel/Sites/im-rj/portfolio.json historical/rj-portfolio-$i.json; done
 
-for i in `ls /Volumes/DiracTB/Backups.backupdb/dirac/20??-??-??-??????/Dirac/Users/daniel/Sites/im-rj/portfolio.json | cut -d / -f 6`; do echo copying $i ; scp -p /Volumes/DiracTB/Backups.backupdb/dirac/$i/Dirac/Users/daniel/Sites/im-rj/portfolio.json historical/rj-portfolio-$i.json; done
+# When HD was named Macintosh\ HD
+for i in `ls /Volumes/DiracTB/Backups.backupdb/dirac/20??-??-??-??????/Macintosh\ HD/Users/daniel/Sites/im-rj/portfolio.json | cut -d / -f 6`; do echo copying $i ; cp /Volumes/DiracTB/Backups.backupdb/dirac/$i/Macintosh\ HD/Users/daniel/Sites/im-rj/portfolio.json historical/rj-portfolio-$i.json; done
 
-ls /Volumes/DiracTB/Backups.backupdb/dirac/20??-??-??-??????/Dirac/Users/daniel/Sites/im-rj/portfolio.json|
+
 
 scrape the portfolio data
 
