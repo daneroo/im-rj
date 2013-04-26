@@ -1,22 +1,29 @@
 # Raymond-James
 
+## Historical Data
 Historical data is in JSON format in: `historical/rj-portfolio-20??-??-??-??????.json`
 
-Shutdown on 2013-04-26
-Moved this directory from dirac:~/Site/im-rj to ~/Dropbox/Finance/RaymondJames/im-rj
+## Shutdown on 2013-04-26
+Moved this directory from `dirac:~/Site/im-rj` to `~/Dropbox/Finance/RaymondJames/im-rj`
 
+## Historical Data from TimeMachine
 I also got the data back from time machine:
 
-ls /Volumes/DiracTB/Backups.backupdb/dirac/20??-??-??-??????/Dirac/Users/daniel/Sites/im-rj/portfolio.json
+    ls /Volumes/DiracTB/Backups.backupdb/dirac/20??-??-??-??????/Dirac/Users/daniel/Sites/im-rj/portfolio.json
 
 to copy them:
 
-# When HD was named Dirac
-for i in `ls /Volumes/DiracTB/Backups.backupdb/dirac/20??-??-??-??????/Dirac/Users/daniel/Sites/im-rj/portfolio.json | cut -d / -f 6`; do echo copying $i ; cp /Volumes/DiracTB/Backups.backupdb/dirac/$i/Dirac/Users/daniel/Sites/im-rj/portfolio.json historical/rj-portfolio-$i.json; done
+    # When HD was named Dirac
+    for i in `ls /Volumes/DiracTB/Backups.backupdb/dirac/20??-??-??-??????/Dirac/Users/daniel/Sites/im-rj/portfolio.json | cut -d / -f 6`; do echo copying $i ; cp /Volumes/DiracTB/Backups.backupdb/dirac/$i/Dirac/Users/daniel/Sites/im-rj/portfolio.json historical/rj-portfolio-$i.json; done
 
-# When HD was named Macintosh\ HD
-for i in `ls /Volumes/DiracTB/Backups.backupdb/dirac/20??-??-??-??????/Macintosh\ HD/Users/daniel/Sites/im-rj/portfolio.json | cut -d / -f 6`; do echo copying $i ; cp /Volumes/DiracTB/Backups.backupdb/dirac/$i/Macintosh\ HD/Users/daniel/Sites/im-rj/portfolio.json historical/rj-portfolio-$i.json; done
+    # When HD was named Macintosh\ HD
+    for i in `ls /Volumes/DiracTB/Backups.backupdb/dirac/20??-??-??-??????/Macintosh\ HD/Users/daniel/Sites/im-rj/portfolio.json | cut -d / -f 6`; do echo copying $i ; cp /Volumes/DiracTB/Backups.backupdb/dirac/$i/Macintosh\ HD/Users/daniel/Sites/im-rj/portfolio.json historical/rj-portfolio-$i.json; done
 
+# Cron
+
+    # Shutdown 2013-04-26 - moved to ~/Dropbox/Finance/RaymondJames/im-rj
+    # imetrical raymond james
+    #05 00,23 * * * cd /Users/daniel/Sites/im-rj; /usr/local/bin/phantomjs-1.6.1 --ignore-ssl-errors=yes scrape-raymondjames.js USER PASS >> scrape.log 2>&1
 
 
 scrape the portfolio data
@@ -30,11 +37,3 @@ The script invocations generates the `portfolio.json` file (git ignored).
     # in 1.3 : 
     phantomjs scrape-raymondjames.js username passsword
 
-## setting up CRON (on dirac every hour)
-This produces the portfolio.json file. it is meant to be deployed in a static web-served folder.
-
-    # crontab -e # on dirac
-    05 00,23 * * * cd /Users/daniel/Sites/im-rj; /usr/local/bin/phantomjs --ignore-ssl-errors=yes scrape-raymondjames.js danlau top3oak >> scrape.log 2>&1
-    
-## deploying on (no.de,cloudfoundy,goedel,dirac,etc)
-deploying publicly accessible (password protect data)
