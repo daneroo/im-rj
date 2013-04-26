@@ -1,6 +1,12 @@
 # Raymond-James
 
-Get the data back from time machine:
+Historical data is in JSON format in: `historical/rj-portfolio-20??-??-??-??????.json`
+
+Shutdown on 2013-04-26
+Moved this directory from dirac:~/Site/im-rj to ~/Dropbox/Finance/RaymondJames/im-rj
+
+I also got the data back from time machine:
+
 ls /Volumes/DiracTB/Backups.backupdb/dirac/20??-??-??-??????/Dirac/Users/daniel/Sites/im-rj/portfolio.json
 
 to copy them:
